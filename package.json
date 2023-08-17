@@ -1,0 +1,25 @@
+{
+  "name": "svg-logo-maker-oop",
+  "version": "1.0.0",
+  "description": "Create a svg logo using the cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elchinatalpf/SVG-Logo-Maker-OOP.git"
+  },
+  "author": "Javier Morales",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elchinatalpf/SVG-Logo-Maker-OOP/issues"
+  },
+  "homepage": "https://github.com/elchinatalpf/SVG-Logo-Maker-OOP#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2"
+  }
+}
