@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('./node_modules/graceful-fs/graceful-fs');
-const shapes = require('./lib/shapes'); // bring shape's name, no shapes.
+const { Triangle, Square, Circle } = require('./lib/shapes');
 
 const questions = () => inquirer.prompt([
   {
