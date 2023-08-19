@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
-const fs = require('./node_modules/graceful-fs/graceful-fs');
+const fs = require('fs');
 const { Triangle, Square, Circle } = require('./lib/shapes');
+
+const colorInput = [];
 
 const questions = () => inquirer.prompt([
   {
@@ -9,7 +11,7 @@ const questions = () => inquirer.prompt([
     message: 'Enter up to three characters'
   },
   {
-    type: 'intput',
+    type: 'input',
     name: 'textColor',
     message: 'Enter text color keyword or a hexadecimal number'
   },
@@ -27,14 +29,27 @@ const questions = () => inquirer.prompt([
 ]);
 
 questions().then((answers) => {
-  console.log('SVG Logo is Generating...');
-  // this will change for sure.
+  
 });
 
 // maybe generateLogoSVG will be in another file.
 
 // file will be write here.
 function writeToFile(fileName, data) {
-  fs.writeToFile('SGV Logo', answers); 
+  const generate = shapes(data);
+  try {
+    fs.writeToFileSync(fileName, data); 
+    console.log('Generating SVG Logo...');
+  } catch (err) {
+    console.log(err);
+  }
 
 }
+
+function init () {
+  questions().then((answers) => {
+    console.log('SVG Logo is Generating...');
+    writeToFile('logo.svg');
+  })
+}
+init();
