@@ -1,19 +1,41 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const { Triangle, Square, Circle } = require('./lib/shapes');
-
-const colorInput = [];
+const colorKeywords = require('colorKeywords');
+// 
+const colorInput = "";
 
 const questions = () => inquirer.prompt([
   {
     type: 'input',
     name: 'logoName',
-    message: 'Enter up to three characters'
+    message: 'Enter up to three characters',
+    validate: (chacName) => {
+      if (chacName.length > 3) {
+        return console.log('\n You must enter three characters to name the logo');
+      } else if (chacName.length < 3) {
+        return console.log('\n You must enter three characters to name the logo');
+      } else {
+        return true;
+      }
+    }
   },
   {
     type: 'input',
     name: 'textColor',
-    message: 'Enter text color keyword or a hexadecimal number'
+    message: 'Enter text color keyword or a hexadecimal number',
+    when: (answer) => {
+      if (answer.textColorUser == colorKeywords) {
+        return true;
+      }
+    },
+    validate: (answer) => {
+      const regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
+      if (!answer.match(regex)) {
+        return console.log('You must enter a valid color/hexadecimal');
+      }
+      return true;
+    }
   },
   {
     type: 'list',
@@ -27,10 +49,6 @@ const questions = () => inquirer.prompt([
     message: "Enter the shape's color keyword of a hexadecimal number"
   },
 ]);
-
-questions().then((answers) => {
-  
-});
 
 // maybe generateLogoSVG will be in another file.
 
