@@ -12,9 +12,9 @@ const questions = () => inquirer.prompt([
     message: 'Enter up to three characters',
     validate: (chacName) => {
       if (chacName.length > 3) {
-        return console.log('\n You must enter three characters to name the logo');
+        return 'You must enter three characters to name the logo';
       } else if (chacName.length < 3) {
-        return console.log('\n You must enter three characters to name the logo');
+        return 'You must enter three characters to name the logo';
       } else {
         return true;
       }
@@ -30,8 +30,8 @@ const questions = () => inquirer.prompt([
       }
     },
     validate: (answer) => {
-      const regex = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
-      if (!answer.match(regex)) {
+      const regex = "/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/";
+      if (!answer.textColor.match(regex)) {
         return console.log('You must enter a valid color/hexadecimal');
       }
       return true;
